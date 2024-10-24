@@ -1,12 +1,7 @@
-const pg = require('pg');
-const { Pool } = pg;
+const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',
-  password: 'opl49',
-  host: 'localhost',
-  port: 5432,
-  database: 'testing_phishing',
+  connectionString: 'postgres://default:uFeDR95xngaw@ep-twilight-cake-a4jlzhv1-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require',
 });
 
 module.exports = {
