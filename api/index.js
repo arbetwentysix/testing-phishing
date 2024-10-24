@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const db = require('./models/db');
+const db = require('../models/db');
 const port = process.env.PORT;
 
 app.use(express.urlencoded());
