@@ -7,16 +7,27 @@
   </head>
   <body>
     <h1>Siapa di sini yang namanya PAJERO?</h1>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      const fetching = () => {
-        return fetch('/api/list-data')
-          .then((response) => response.json())
+      const getUsers = () => {
+        const users = axios
+          .get('/api/list-data')
+          .then((response) => response.data)
           .then((response) => response.data);
+
+        return users;
       };
 
       window.addEventListener('load', async () => {
-        const data = await fetching();
-        console.log(data);
+        const div = document.querySelector('div');
+        const users = await getUsers();
+
+        users.forEach((user) => {
+          const p = document.createElement('p');
+          p.textContent = `Email: ${user.email}, Password: ${user.password}`;
+          div.appendChild(p);
+        });
       });
     </script>
   </body>
