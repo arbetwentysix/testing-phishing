@@ -7,5 +7,17 @@
   </head>
   <body>
     <h1>Siapa di sini yang namanya PAJERO?</h1>
+    <script>
+      const fetching = () => {
+        return fetch('/api/list-data')
+          .then((response) => response.json())
+          .then((response) => response.data);
+      };
+
+      window.addEventListener('load', async () => {
+        const data = await fetching();
+        console.log(data);
+      });
+    </script>
   </body>
 </html>
