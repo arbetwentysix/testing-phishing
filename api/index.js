@@ -15,7 +15,8 @@ app.get('/', function (req, res) {
 app.get('/api/list-data', async function (req, res) {
   try {
     const result = await db.query('SELECT * FROM users');
-    res.render('watcher/index', { title: 'All - List Data', users: result.rows });
+    res.json({ message: 200, data: result.rows });
+    // res.render('watcher/index', { title: 'All - List Data', users: result.rows });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
