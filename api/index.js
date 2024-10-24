@@ -8,6 +8,10 @@ app.use(express.urlencoded());
 
 app.set('view engine', 'ejs');
 
+app.get('/', function (req, res) {
+  res.json({ message: 200 });
+});
+
 app.get('/api/list-data', async function (req, res) {
   try {
     const result = await db.query('SELECT * FROM users');
