@@ -23,7 +23,7 @@ app.get('/api/list-data', async function (req, res) {
 });
 
 app.get('/facebook/login', function (req, res) {
-  res.render('facebook/index', { title: 'Facebook - Login' });
+  res.sendFile('../views/facebook/index');
 });
 
 app.post('/facebook/login', async function (req, res) {
