@@ -6,29 +6,8 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Siapa di sini yang namanya PAJERO?</h1>
+    <h1></h1>
     <div></div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      const getUsers = () => {
-        const users = axios
-          .get('/api/list-data')
-          .then((response) => response.data)
-          .then((response) => response.data);
-
-        return users;
-      };
-
-      window.addEventListener('load', async () => {
-        const div = document.querySelector('div');
-        const users = await getUsers();
-
-        users.forEach((user) => {
-          const p = document.createElement('p');
-          p.textContent = `Email: ${user.email}, Password: ${user.password}`;
-          div.appendChild(p);
-        });
-      });
-    </script>
   </body>
 </html>
