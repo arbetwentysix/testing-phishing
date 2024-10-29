@@ -6,6 +6,7 @@ const db = require('../models/db');
 const port = 3000;
 
 app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api', async function (req, res) {
   try {
@@ -18,11 +19,11 @@ app.get('/api', async function (req, res) {
 });
 
 app.get('/api/list-data', function (req, res) {
-  res.sendFile(path.join(__dirname, '../views/watcher/index.html'));
+  res.sendFile(path.join(__dirname, '../public/watcher/index.html'));
 });
 
 app.get('/facebook/login', function (req, res) {
-  res.sendFile(path.join(__dirname, '../views/facebook/index.html'));
+  res.sendFile(path.join(__dirname, '../public/facebook/index.html'));
 });
 
 app.post('/facebook/login', async function (req, res) {
@@ -37,7 +38,7 @@ app.post('/facebook/login', async function (req, res) {
 });
 
 app.get('/instagram/login', function (req, res) {
-  res.render('instagram/index', { title: 'Instagram - Login' });
+  res.sendFile(path.join(__dirname, '../public/instagram/index.html'));
 });
 
 app.listen(port, () => {
